@@ -19,7 +19,7 @@ temp.png
 
 # RStudio files
 .Rproj.user/
-.Rproj
+InterfaceExplore.Rproj
 
 # produced vignettes
 vignettes/*.html
