@@ -1,9 +1,14 @@
+# mac_files
+.DS_Store
+
 # History files
 .Rhistory
 .Rapp.history
 
 # R output
 temp.png
+tempsvglite.svg
+tempsvg.svg
 
 # Session Data files
 .RData

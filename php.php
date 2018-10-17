@@ -45,8 +45,13 @@ How many runs to make?<br>
             
 ?>
             <br>
-            <img src = "temp.png">
-        
+            <img width="600" src = "tempsvglite.svg">
+            
+            <!--
+              <br>
+              <img src = "temp.png">
+            -->
+                    
 <?php       }
     } else {
         echo "<br>Variables have not been set!";
