@@ -14,7 +14,21 @@ fn.makeBarPlot <- function(npick, nrun){
     x1 <- c(x1, xi)
   }
   
-  mostfreqpicks <- names(sort(table(x1), decreasing = TRUE))[1:npick]  
+  txsort <- sort(table(x1), decreasing = TRUE)
+  # print(txsort)
+  
+  kcutoff <- txsort[npick] 
+  mostfreqpicks <- as.numeric(names(txsort[txsort > kcutoff]))
+
+  xc2 <- as.numeric(names(txsort[txsort == kcutoff]))
+
+  if(length(xc2) == 1){
+    mostfreqpicks <- c(mostfreqpicks, xc2)
+  } else {
+    xc3 <- sample(xc2, npick - length(mostfreqpicks), replace = FALSE)
+    mostfreqpicks <- c(mostfreqpicks, xc3)
+  }
+  
   x0 <- setdiff(Imin:Imax, unique(x1))
   t0 <- rep(0, length(x0))
   names(t0) <- x0
@@ -34,5 +48,5 @@ fn.makeBarPlot <- function(npick, nrun){
 }
 
 # test
-# npick <- 5 ; nrun <- 10
-# fn.makeBarPlot(npick, nrun)
+npick <- 5 ; nrun <- 100
+fn.makeBarPlot(npick, nrun)
