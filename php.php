@@ -40,18 +40,24 @@ How many runs to make?<br>
         } else {
             echo "<br> Here's your pick input:  ". $NPICK ;
             echo "<br> Here's twice your run input:  ". 2*$NRUN;
+            echo "<br>";
             
             exec("Rscript --verbose phpread.R $NPICK $NRUN $json");
+            echo "<br>Generator 1: " . file_get_contents("outputr.txt");
             
+            exec("python3 phpread.py $NPICK $NRUN");
+            echo " | Generator 2: " . file_get_contents("outputpy.txt");
 ?>
+
             <br>
             <img width="600" src = "tempsvglite.svg">
-            
-            <!--
-              <br>
-              <img src = "temp.png">
+            <img src = "tempp.png">
+
+<!--
+             <br>
+             <img src = "temp.png">
             -->
-                    
+
 <?php       }
     } else {
         echo "<br>Variables have not been set!";

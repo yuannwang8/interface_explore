@@ -29,6 +29,10 @@ fn.makeBarPlot <- function(npick, nrun){
     mostfreqpicks <- c(mostfreqpicks, xc3)
   }
   
+  str_mostfreqpicks <- paste(sort(mostfreqpicks), collapse = ", ")
+  
+  write(str_mostfreqpicks, file = "outputr.txt")
+  
   x0 <- setdiff(Imin:Imax, unique(x1))
   t0 <- rep(0, length(x0))
   names(t0) <- x0
@@ -39,7 +43,7 @@ fn.makeBarPlot <- function(npick, nrun){
                     col = "lightsteelblue", border = NA,
                     xlim = NULL, xaxt = 'n',
                     ylim = c(0,1.2*max(t1)),
-                    xlab = paste0("Most picked: ", paste(mostfreqpicks, collapse = ", ") ),
+                    xlab = paste0("Most picked: ",  str_mostfreqpicks),
                     ylab = "Count",
                     main = paste0("Picking ", npick, " integers between ", Imin, " and ", Imax, " ", nrun, " times")
   )
@@ -50,4 +54,3 @@ fn.makeBarPlot <- function(npick, nrun){
 # test
 #npick <- 5 ; nrun <- 100
 #fn.makeBarPlot(npick, nrun)
-
