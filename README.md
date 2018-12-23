@@ -1,4 +1,4 @@
-# interface_explore
+# Motivation
 
 1. To explore the similarities and differences between serving up a R-output in RShiny and in PHP.  
 
