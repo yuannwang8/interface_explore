@@ -47,6 +47,9 @@ How many runs to make?<br>
             
             exec("python3 phpread.py $NPICK $NRUN");
             echo " | Generator 2: " . file_get_contents("outputpy.txt");
+            
+            exec("swift phpread.swift $NPICK $NRUN");
+            echo " | Generator 3: " . file_get_contents("outputs.txt");
 ?>
 
             <br>

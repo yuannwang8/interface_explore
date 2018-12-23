@@ -4,6 +4,7 @@ tempsvglite.svg
 tempp.png
 outputpy.txt
 outputr.txt
+outputs.txt
 
 
 # R stuff
@@ -13,3 +14,4 @@ outputr.txt
 .Rproj.user/
 InterfaceExplore.Rproj
 .Rproj.user
+.DS_Store
