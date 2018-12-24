@@ -42,19 +42,20 @@ How many runs to make?<br>
             echo "<br> Here's twice your run input:  ". 2*$NRUN;
             echo "<br>";
             
-            exec("Rscript --verbose phpread.R $NPICK $NRUN $json");
-            echo "<br>Generator 1: " . file_get_contents("outputr.txt");
-            
             exec("python3 phpread.py $NPICK $NRUN");
-            echo " | Generator 2: " . file_get_contents("outputpy.txt");
+            echo "<br>Generator 1: " . file_get_contents("outputpy.txt");
             
             exec("swift phpread.swift $NPICK $NRUN");
-            echo " | Generator 3: " . file_get_contents("outputs.txt");
+            echo " | Generator 2: " . file_get_contents("outputs.txt");
+            
+            exec("Rscript --verbose phpread.R $NPICK $NRUN $json");
+            echo " | Generator 3: " . file_get_contents("outputr.txt");
+
 ?>
 
             <br>
-            <img width="600" src = "tempsvglite.svg">
             <img src = "tempp.png">
+            <img width="600" src = "tempsvglite.svg">
 
 <!--
              <br>

@@ -29,9 +29,19 @@ fn.makeBarPlot <- function(npick, nrun){
     mostfreqpicks <- c(mostfreqpicks, xc3)
   }
   
+  ### write out lines
+  
   str_mostfreqpicks <- paste(sort(mostfreqpicks), collapse = ", ")
   
   write(str_mostfreqpicks, file = "outputr.txt")
+  
+  str_log <- paste("G3", as.numeric(Sys.time()), npick, nrun, Imin, Imax, paste0("[",str_mostfreqpicks,"]"), sep = ", ")
+  # str_log <- paste0(str_log,"\n")
+
+  write(str_log, file = "outputLog.txt", append = TRUE)
+  
+  
+  ### Draw barchart
   
   x0 <- setdiff(Imin:Imax, unique(x1))
   t0 <- rep(0, length(x0))

@@ -87,20 +87,22 @@ make_chart = True
 ####### Write results to text logs
 
 if write_to_files:
-    output_line = str ( lst_data[3] )
+    output_line = str ( lst_data[3] )[1:-1]
     fout_line = open('outputpy.txt','w')
     fout_line.write(output_line)
     fout_line.close()
 
-##    from datetime import datetime
-##    from datetime import timezone
-##    timestr = datetime.now(timezone.utc)
-##    output_log = str ( (lst_data[0], lst_data[1], lst_data[6], lst_data[7] , lst_data[3] , timestr) )
-##    output_log = '\n' + output_log
-##    fout_log = open('randomintpylog.txt','a') 
-##    fout_log.write(output_log)
-##    fout_log.close()
-    
+    # from datetime import datetime
+    # from datetime import timezone
+    # timestr = datetime.now(timezone.utc)
+    import time
+    timestr = time.time()
+    output_log = str ( (timestr, lst_data[0], lst_data[1], lst_data[6], lst_data[7] , lst_data[3] ) )
+    output_log = 'G1, ' + output_log[1:-1]  + '\n'    
+    fout_log = open('outputLog.txt','a')
+    fout_log.write(output_log)
+    fout_log.close()
+
 ####### Make pretty chart
 
 if make_chart:
@@ -108,7 +110,7 @@ if make_chart:
     import matplotlib.pyplot as plt
 
     maintitle = 'Picking %d integers between %d and %d %d times' % ( lst_data[0], lst_data[6], lst_data[7], lst_data[1])
-    xlab = 'Most picked: ' + str(lst_data[3])
+    xlab = 'Most picked: ' + str(lst_data[3])[1:-1]
     ylab = 'Count'
 
     heights = lst_data[5]

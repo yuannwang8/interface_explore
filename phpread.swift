@@ -68,13 +68,35 @@ let stringtoprint = arraytostring.joined(separator: ", ")
 let text1 = stringtoprint
     
 // print(text1)
-    
+
+var textLog =  "G2, " + String(NSDate().timeIntervalSince1970) +
+    ", " + String( String(npicks) + ", " + String(nruns) +
+        ", " + String(Imin) + ", " + String(Imax) +
+        ", [" + stringtoprint + "]\n")
+
+let textData = Data(textLog.utf8)
+
+// print(textData)
+
 // save output
     
 let file1 = "outputs.txt" //
 do{
    try text1.write(toFile: file1, atomically: false, encoding: .utf8)
 } catch {/* error handling here */}
+
+
+let fileLog = NSURL.fileURL(withPath: "outputLog.txt")
+//    do{ // initially, create new file and write smething to it
+//        try Data("hello World\n".utf8).write(to: fileLog)
+//    } catch {/* error handling here */}
+do{
+    let fileHandle = try FileHandle(forWritingTo: fileLog)
+    fileHandle.seekToEndOfFile()
+    fileHandle.write(textData)
+    fileHandle.closeFile()
+} catch {/* error handling here */}
+
 
 // end save output
     
